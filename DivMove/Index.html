@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		var speed = 5;
+
+		var div = document.createElement('div');
+		document.body.appendChild(div);
+		var inputBox = document.createElement("input");
+		document.body.appendChild(inputBox);
+
+		div.style.width = '100px';
+		div.style.height = '100px';
+		div.style.backgroundColor = 'red';
+		div.style.position = 'absolute';
+		div.style.left = 0;
+		div.style.top = 0;
+
+		inputBox.type = "text";
+		inputBox.onchange = SetSpeed;
+
+		console.log(inputBox);
+		inputBox.value = speed;
+		function SetSpeed()
+		{
+			speed = parseInt(inputBox.value);
+		}
+		document.onkeydown = function (e)
+		{
+			switch (e.key)
+			{
+				case "w": div.style.top = parseInt(div.style.top) - speed + "px"; break;
+				case "s": div.style.top = parseInt(div.style.top) + speed + "px"; break;
+				case "a": div.style.left = parseInt(div.style.left) - speed + "px"; break;
+				case "d": div.style.left = parseInt(div.style.left) + speed + "px"; break;
+			}
+		}
+	</script>
+</body>
+</html>
